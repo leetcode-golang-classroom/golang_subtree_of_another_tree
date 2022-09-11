@@ -51,6 +51,13 @@ func CreateBinaryTree(input *[]string) *TreeNode {
 	}
 	return tree
 }
+func BenchmarkTest(b *testing.B) {
+	root := CreateBinaryTree(&[]string{"3", "4", "5", "1", "2", "null", "null", "null", "null", "0"})
+	subRoot := CreateBinaryTree(&[]string{"4", "1", "2"})
+	for idx := 0; idx < b.N; idx++ {
+		isSubtree(root, subRoot)
+	}
+}
 func Test_isSubtree(t *testing.T) {
 	type args struct {
 		root    *TreeNode
